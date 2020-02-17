@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/rg_ChooseGender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/margin_ten">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choose your gender: "
+            android:paddingRight="20dp"
+            android:textStyle="bold"
+            ></TextView>
+
+        <RadioButton
+            android:id="@+id/rb_Male"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:checked="false"
+            android:text="Male" />
+
+        <RadioButton
+            android:id="@+id/rb_Female"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="Female" />
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Weight"
+        android:textSize="@dimen/text_twenty"
+        android:gravity="center"
+        android:textStyle="bold"></TextView>
+
+        <EditText
+            android:id="@+id/et_Weight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="Indicate your current weight"
+            android:layout_margin="@dimen/margin_ten"></EditText>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Height"
+        android:textSize="@dimen/text_twenty"
+        android:gravity="center"
+        android:textStyle="bold"></TextView>
+
+
+        <EditText
+            android:id="@+id/et_Height"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="Indicate your current height"
+            android:layout_margin="@dimen/margin_ten"></EditText>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Age"
+        android:textSize="@dimen/text_twenty"
+        android:gravity="center"
+        android:textStyle="bold"></TextView>
+
+        <EditText
+            android:id="@+id/et_Age"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="indicate your current age"
+            android:layout_margin="@dimen/margin_ten"></EditText>
+
+        <Spinner
+            android:id="@+id/spin_Lvl_activity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_ten"></Spinner>
+
+        <Button
+            android:id="@+id/btn_generate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Make a calculation"
+            android:textSize="@dimen/text_fifteen"
+            android:textStyle="bold"
+            android:padding="@dimen/padding_five"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginLeft="@dimen/margin_fifty"
+            android:layout_marginRight="@dimen/margin_fifty">
+        </Button>
+
+
+        <TextView
+            android:id="@+id/tv_info_test"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_ten"
+            android:text="@string/info_test"
+            android:textSize="@dimen/font_large"
+            android:gravity="center">
+        </TextView>
+
+</LinearLayout>
+
+</LinearLayout>
