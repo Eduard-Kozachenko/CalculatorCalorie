@@ -4,6 +4,11 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:orientation="vertical">
 
+<ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,13 +25,13 @@ android:orientation="vertical">
         android:layout_height="wrap_content"
         android:gravity="left"
         android:orientation="horizontal"
-        android:layout_margin="@dimen/margin_ten">
+        android:layout_margin="@dimen/margin_10">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Choose your gender: "
-            android:paddingRight="20dp"
+            android:paddingRight="@dimen/padding_20"
             android:textStyle="bold"
             ></TextView>
 
@@ -34,7 +39,7 @@ android:orientation="vertical">
             android:id="@+id/rb_Male"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="16dp"
+            android:layout_marginRight="@dimen/margin_16"
             android:checked="false"
             android:text="Male" />
 
@@ -50,7 +55,7 @@ android:orientation="vertical">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Weight"
-        android:textSize="@dimen/text_twenty"
+        android:textSize="@dimen/text_20"
         android:gravity="center"
         android:textStyle="bold"></TextView>
 
@@ -60,13 +65,13 @@ android:orientation="vertical">
             android:layout_height="wrap_content"
             android:gravity="center"
             android:hint="Indicate your current weight"
-            android:layout_margin="@dimen/margin_ten"></EditText>
+            android:layout_margin="@dimen/margin_10"></EditText>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Height"
-        android:textSize="@dimen/text_twenty"
+        android:textSize="@dimen/text_20"
         android:gravity="center"
         android:textStyle="bold"></TextView>
 
@@ -77,13 +82,13 @@ android:orientation="vertical">
             android:layout_height="wrap_content"
             android:gravity="center"
             android:hint="Indicate your current height"
-            android:layout_margin="@dimen/margin_ten"></EditText>
+            android:layout_margin="@dimen/margin_10"></EditText>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Age"
-        android:textSize="@dimen/text_twenty"
+        android:textSize="@dimen/text_20"
         android:gravity="center"
         android:textStyle="bold"></TextView>
 
@@ -93,25 +98,25 @@ android:orientation="vertical">
             android:layout_height="wrap_content"
             android:gravity="center"
             android:hint="indicate your current age"
-            android:layout_margin="@dimen/margin_ten"></EditText>
+            android:layout_margin="@dimen/margin_10"></EditText>
 
         <Spinner
             android:id="@+id/spin_Lvl_activity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_ten"></Spinner>
+            android:layout_margin="@dimen/margin_10"></Spinner>
 
         <Button
             android:id="@+id/btn_generate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Make a calculation"
-            android:textSize="@dimen/text_fifteen"
+            android:textSize="@dimen/text_15"
             android:textStyle="bold"
-            android:padding="@dimen/padding_five"
-            android:layout_marginTop="@dimen/margin_small"
-            android:layout_marginLeft="@dimen/margin_fifty"
-            android:layout_marginRight="@dimen/margin_fifty">
+            android:padding="@dimen/padding_5"
+            android:layout_marginTop="@dimen/margin_5"
+            android:layout_marginLeft="@dimen/margin_50"
+            android:layout_marginRight="@dimen/margin_50">
         </Button>
 
 
@@ -119,12 +124,15 @@ android:orientation="vertical">
             android:id="@+id/tv_info_test"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_ten"
+            android:layout_marginTop="@dimen/margin_10"
             android:text="@string/info_test"
-            android:textSize="@dimen/font_large"
+            android:textSize="@dimen/font_30"
             android:gravity="center">
         </TextView>
 
 </LinearLayout>
+
+</ScrollView>
+
 
 </LinearLayout>

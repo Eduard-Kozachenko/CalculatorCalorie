@@ -8,8 +8,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.eduard.caloriecounter.R;
-import com.eduard.caloriecounter.presentation.activity.MainActivity;
+
 import com.eduard.caloriecounter.presentation.base.BaseFragment;
+import com.eduard.caloriecounter.presentation.base.BasePresenter;
 import com.eduard.caloriecounter.presentation.model.User;
 import com.eduard.caloriecounter.presentation.presenter.CollectionContract;
 import com.eduard.caloriecounter.presentation.presenter.CollectionPresenter;
@@ -17,35 +18,28 @@ import com.eduard.caloriecounter.presentation.utils.Calculator;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.DialogFragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 
 public class CollectionFragment extends BaseFragment implements CollectionContract.View {
 
 //    @Inject
-//    DialogInfoFragment alertDialogInfo;
-//    @Inject
 //    CollectionPresenter collectionPresenter;
 
     private TextView tvInfo;
     private Button btnGenerate;
-
-    private CollectionContract.Presenter mPresenter;
-
-
-    private CollectionPresenter presenter = new CollectionPresenter(new Calculator(), new User());
+    private CollectionContract.Presenter presenter;
     private DialogFragment loadingFragment = DialogLoadingFragment.getInstance();
 
     @Override
     public void onPreparePresenter() {
-        attachPresenter(presenter, this);
+        attachPresenter((CollectionPresenter) presenter, this);
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        presenter = new CollectionPresenter(new Calculator(), new User());
 
         return inflater.inflate(R.layout.collection_of_info_fragment, container, false);
     }
@@ -57,23 +51,9 @@ public class CollectionFragment extends BaseFragment implements CollectionContra
     }
 
 //    @Override
-//    public void initView() {
-//
-//        tvInfo = tvInfo.findViewById(R.id.tv_info_test);
-//        btnGenerate = btnGenerate.findViewById(R.id.btn_generate);
-//        btnGenerate.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                presenter.onClick(v);
-//            }
-//        });
-//
+//    public void updateUserInfo(String info) {
+//        tvInfo.setText(info);
 //    }
-
-    @Override
-    public void updateUserInfo(String info) {
-        tvInfo.setText(info);
-    }
 
     @Override
     public void showProgressBar() {
@@ -94,6 +74,19 @@ public class CollectionFragment extends BaseFragment implements CollectionContra
     @Override
     public void showError() {
 
+    }
+
+    @Override
+    public void initView() {
+        tvInfo = tvInfo.findViewById(R.id.tv_info_test);
+        btnGenerate = btnGenerate.findViewById(R.id.btn_generate);
+        btnGenerate.setOnClickListener(v -> presenter.onClick());
+    }
+
+    @Override
+    public void setViewData(String data) {
+
+        tvInfo.setText(data);
     }
 
 

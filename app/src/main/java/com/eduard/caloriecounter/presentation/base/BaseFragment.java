@@ -1,9 +1,12 @@
 package com.eduard.caloriecounter.presentation.base;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
+import com.eduard.caloriecounter.R;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -50,12 +53,44 @@ public class BaseFragment extends Fragment {
     }
 
     public void showInformationDialog(String information) {
+
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setMessage(information)
-                .setCancelable(false)
-                .setNeutralButton("OK", (dialog, which) -> dialog.dismiss());
-        AlertDialog alert = builder.create();
-        alert.show();
+
+//        builder.setMessage(information);
+//        builder.setCancelable(true);
+//
+//        builder.setPositiveButton(
+//                "Ok",
+//                (dialog, id) -> dialog.cancel());
+//
+//        builder.setNegativeButton(
+//                "Cancel",
+//                (dialog, id) -> dialog.cancel());
+//
+//        AlertDialog alert = builder.create();
+//        alert.show();
+
+        builder.setTitle("Confirm Delete...");
+        builder.setMessage("Are you sure you want delete this file?");
+        builder.setIcon(R.drawable.ic_assignment_returned_black_24dp);
+        builder.setPositiveButton("YES",
+                (dialog, which) -> {
+                    // Write your code here to execute after dialog
+                    Toast.makeText(getActivity(),
+                            "You clicked on YES", Toast.LENGTH_SHORT)
+                            .show();
+                });
+
+        builder.setNegativeButton("NO",
+                (dialog, which) -> {
+                    // Write your code here to execute after dialog
+                    Toast.makeText(getActivity(),
+                            "You clicked on NO", Toast.LENGTH_SHORT)
+                            .show();
+                    dialog.cancel();
+                });
+
+        builder.show();
     }
 
     public void attachPresenter(BasePresenter basePresenter, BasePresenter.View view) {

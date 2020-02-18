@@ -6,17 +6,19 @@ public interface CollectionContract {
 
      interface View extends BasePresenter.View {
 
-        void updateUserInfo(String info);
+         void initView();
+         void setViewData(String data);
+//        void updateUserInfo(String info);
 
     }
 
     interface Presenter{
 
-//        void onClick(android.view.View view);
+        void onClick();
 
-        void appendValue(String value);
-
-        void performCalculation();
+//        void appendValue(String value);
+//
+//        void performCalculation();
 
     }
 }

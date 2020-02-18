@@ -17,47 +17,53 @@ public class CollectionPresenter extends BasePresenter<CollectionContract.View> 
     private User mHeight;
     private User mAge;
 
-    private boolean isInErrorState;
+//    private boolean isInErrorState;
 
     public CollectionPresenter(Calculator calculator,User user) {
 
         mCalculator=calculator;
         mUser=user;
+
+//        initPresenter();
+    }
+
+    private void initPresenter() {
+        mCalculator = new Calculator();
+        getView().initView();
+    }
+
+    @Override
+    public void onClick() {
+        String data = mCalculator.operation(mWeight,mHeight,mAge);
+        getView().setViewData(data);
     }
 
 //    @Override
-//    public void onClick(android.view.View view) {
-////        float data = user.getInfo();
-////        getView().updateUserInfo(data);
+//    public void appendValue(String value) {
+//
 //    }
-
-    @Override
-    public void appendValue(String value) {
-
-    }
-
-    @Override
-    public void performCalculation() {
-        String result = "";
-
-        result = mCalculator.operation(mWeight,mHeight,mAge);
-
-
-        if (result.equals("") || result.length() > User.MAX_LENGTH) {
-            switchToErrorState();
-        } else {
-//            mUser.setValue(result);
-        }
-
-    }
-
-    private void switchToErrorState() {
-        mWeight.setWeight(User.ERROR_VALUE);
-        isInErrorState = true;
-    }
-
+//
+//    @Override
+//    public void performCalculation() {
+//        String result = "";
+//        result = mCalculator.operation(mWeight,mHeight,mAge);
+//
+//        if (result.equals("") || result.length() > User.MAX_LENGTH) {
+//            switchToErrorState();
+//        } else {
+////            mUser.setValue(result);
+//        }
+//        updateDisplay();
+//    }
+//
+//    private void switchToErrorState() {
+//        mWeight.setWeight(User.ERROR_VALUE);
+//        isInErrorState = true;
+//    }
+//
 //    private void updateDisplay() {
-//        getView().updateUserInfo(mWeight.getAge(),mHeight.getHeight(),mAge.getAge());
+////        getView().updateUserInfo(mWeight.getAge(),mHeight.getHeight(),mAge.getAge());
+//        getView().updateUserInfo(mWeight.getWeight());
 //        getView().updateUserInfo(mUser.toString());
 //    }
 
