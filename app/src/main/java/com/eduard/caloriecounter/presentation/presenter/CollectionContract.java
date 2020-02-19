@@ -11,7 +11,7 @@ public interface CollectionContract {
 
     }
 
-    interface Presenter{
+    interface Presenter {
 
         void onClick(android.view.View view);
 

@@ -25,7 +25,6 @@ public class BaseFragment extends Fragment {
     }
 
     protected void onPreparePresenter() {
-
     }
 
     protected void onPrepareFragment(@NonNull View view) {
@@ -33,7 +32,6 @@ public class BaseFragment extends Fragment {
     }
 
     protected void onInjection() {
-
     }
 
     @Override
@@ -73,17 +71,15 @@ public class BaseFragment extends Fragment {
         builder.setTitle("Confirm Delete...");
         builder.setMessage("Are you sure you want delete this file?");
         builder.setIcon(R.drawable.ic_assignment_returned_black_24dp);
-        builder.setPositiveButton("YES",
+        builder.setPositiveButton("Ok",
                 (dialog, which) -> {
-                    // Write your code here to execute after dialog
                     Toast.makeText(getActivity(),
                             "You clicked on YES", Toast.LENGTH_SHORT)
                             .show();
                 });
 
-        builder.setNegativeButton("NO",
+        builder.setNegativeButton("Cancel",
                 (dialog, which) -> {
-                    // Write your code here to execute after dialog
                     Toast.makeText(getActivity(),
                             "You clicked on NO", Toast.LENGTH_SHORT)
                             .show();

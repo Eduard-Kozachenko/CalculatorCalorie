@@ -33,9 +33,7 @@ public class CollectionFragment extends BaseFragment implements CollectionContra
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         presenter = new CollectionPresenter();
-
         return inflater.inflate(R.layout.collection_of_info_fragment, container, false);
     }
 
@@ -54,13 +52,11 @@ public class CollectionFragment extends BaseFragment implements CollectionContra
 
     @Override
     public void setViewData(String data) {
-
         tvInfo.setText(data);
     }
 
     @Override
     public void showProgressBar() {
-
         if (!loadingFragment.isVisible()) {
             loadingFragment.show(getActivity().getSupportFragmentManager(), "LOADING");
         }
@@ -68,7 +64,6 @@ public class CollectionFragment extends BaseFragment implements CollectionContra
 
     @Override
     public void hideProgressBar() {
-
             if (loadingFragment.isVisible()) {
                 loadingFragment.dismiss();
             }
@@ -76,7 +71,6 @@ public class CollectionFragment extends BaseFragment implements CollectionContra
 
     @Override
     public void showError() {
-
     }
 
 //    protected void onInjection() {

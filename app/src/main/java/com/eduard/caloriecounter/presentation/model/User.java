@@ -2,33 +2,31 @@ package com.eduard.caloriecounter.presentation.model;
 
 public class User {
 
-    public String str_Weight,str_Height,str_Age;
-//    public static final String ERROR_VALUE = "ERROR";
+    public String UserWeight,UserHeight,UserAge;
     public static final int MAX_DECIMAL_DIGITS = 1;
-//    public static final int MAX_LENGTH = 10;
 
     public String getWeight() {
-        return str_Weight;
+        return UserWeight;
     }
 
     public void setWeight(String weight) {
-        str_Weight = weight;
+        UserWeight = weight;
     }
 
     public String getHeight() {
-        return str_Height;
+        return UserHeight;
     }
 
     public void setHeight(String height) {
-        str_Height = height;
+        UserHeight = height;
     }
 
     public String getAge() {
-        return str_Age;
+        return UserAge;
     }
 
     public void setAge(String age) {
-        str_Age = age;
+        UserAge = age;
     }
 
 }
