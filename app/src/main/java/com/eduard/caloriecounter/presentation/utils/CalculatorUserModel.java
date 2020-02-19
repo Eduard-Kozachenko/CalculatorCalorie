@@ -15,13 +15,18 @@
  */
 
 package com.eduard.caloriecounter.presentation.utils;
-
 import com.eduard.caloriecounter.presentation.model.User;
+import com.eduard.caloriecounter.presentation.presenter.CollectionContract;
 
-public class Calculator {
+public class CalculatorUserModel implements CollectionContract.Model{
 
-    public String operation(User etWeight, User etHeight,User etAge) {
-        double result =  (88.36 + (13.4 * getWeight(etWeight)) + (4.8 * getHeight(etHeight))-(5.7 * getAge(etAge)));
+    User strWeight;
+    User strHeight;
+    User strAge;
+
+    @Override
+    public String operation() {
+        double result =  (88.36 + (13.4 * getWeight(strWeight)) + (4.8 * getHeight(strHeight))-(5.7 * getAge(strAge)));
         return formatResult(result);
     }
 

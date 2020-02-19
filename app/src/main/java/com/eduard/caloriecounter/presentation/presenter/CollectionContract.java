@@ -8,17 +8,17 @@ public interface CollectionContract {
 
          void initView();
          void setViewData(String data);
-//        void updateUserInfo(String info);
 
     }
 
     interface Presenter{
 
-        void onClick();
-
-//        void appendValue(String value);
-//
-//        void performCalculation();
+        void onClick(android.view.View view);
 
     }
+
+    interface Model {
+        String operation();
+    }
+
 }

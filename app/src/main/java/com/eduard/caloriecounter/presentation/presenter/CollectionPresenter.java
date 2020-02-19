@@ -1,71 +1,27 @@
 package com.eduard.caloriecounter.presentation.presenter;
 
-import android.content.DialogInterface;
-import android.view.View;
-import android.widget.Button;
-
 import com.eduard.caloriecounter.presentation.base.BasePresenter;
-import com.eduard.caloriecounter.presentation.model.User;
-import com.eduard.caloriecounter.presentation.utils.Calculator;
+import com.eduard.caloriecounter.presentation.utils.CalculatorUserModel;
 
 public class CollectionPresenter extends BasePresenter<CollectionContract.View> implements CollectionContract.Presenter {
 
-    private User mUser;
-    private Calculator mCalculator;
+    private CollectionContract.Model model;
 
-    private User mWeight;
-    private User mHeight;
-    private User mAge;
+    public CollectionPresenter() {
 
-//    private boolean isInErrorState;
-
-    public CollectionPresenter(Calculator calculator,User user) {
-
-        mCalculator=calculator;
-        mUser=user;
-
-//        initPresenter();
+        initPresenter();
     }
 
     private void initPresenter() {
-        mCalculator = new Calculator();
+        model = new CalculatorUserModel();
         getView().initView();
     }
 
     @Override
-    public void onClick() {
-        String data = mCalculator.operation(mWeight,mHeight,mAge);
+    public void onClick(android.view.View view) {
+        String data = model.operation();
         getView().setViewData(data);
     }
-
-//    @Override
-//    public void appendValue(String value) {
-//
-//    }
-//
-//    @Override
-//    public void performCalculation() {
-//        String result = "";
-//        result = mCalculator.operation(mWeight,mHeight,mAge);
-//
-//        if (result.equals("") || result.length() > User.MAX_LENGTH) {
-//            switchToErrorState();
-//        } else {
-////            mUser.setValue(result);
-//        }
-//        updateDisplay();
-//    }
-//
-//    private void switchToErrorState() {
-//        mWeight.setWeight(User.ERROR_VALUE);
-//        isInErrorState = true;
-//    }
-//
-//    private void updateDisplay() {
-////        getView().updateUserInfo(mWeight.getAge(),mHeight.getHeight(),mAge.getAge());
-//        getView().updateUserInfo(mWeight.getWeight());
-//        getView().updateUserInfo(mUser.toString());
-//    }
 
 }
 
