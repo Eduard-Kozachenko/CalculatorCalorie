@@ -20,7 +20,6 @@ public class BasePresenter<V extends BasePresenter.View> {
         detachView();
     }
 
-
     public interface View {
 
         void showProgressBar();

@@ -20,46 +20,10 @@ import com.eduard.caloriecounter.presentation.presenter.CollectionContract;
 
 public class CalculatorUserModel implements CollectionContract.Model{
 
-    User strWeight;
-    User strHeight;
-    User strAge;
-
     @Override
-    public String operation() {
-        double result =  (88.36 + (13.4 * getWeight(strWeight)) + (4.8 * getHeight(strHeight))-(5.7 * getAge(strAge)));
-        return formatResult(result);
-    }
-
-    private double getWeight(User operand) {
-        return Double.valueOf(operand.getWeight());
-    }
-    private double getHeight(User operand) {
-        return Double.valueOf(operand.getHeight());
-    }
-    private double getAge(User operand) {
-        return Double.valueOf(operand.getAge());
-    }
-
-    private String formatResult(Double res) {
-        // Limit digits
-        double digits = Math.pow(10, User.MAX_DECIMAL_DIGITS);
-        res = Math.round(res * digits) / digits;
-
-        // Split resulting float
-        String result = Double.toString(res);
-        String decimals = result.substring(0, result.indexOf("."));
-        String fractionals = result.substring(result.indexOf(".") + 1);
-
-        // Remove trailing zeros
-        while (fractionals.length() > 0 && fractionals.substring(fractionals.length() - 1).equals("0")) {
-            fractionals = fractionals.substring(0, fractionals.length() - 1);
-        }
-
-        if (fractionals.length() > 0) {
-            // Result has fractionals different than zero - return them!
-            return decimals + "." + fractionals;
-        } else {
-            return decimals;
-        }
+    public String operation(double weight, double height, double age) {
+        User user = new User(weight,height,age);
+        double result =(88.36 + (13.4 * user.getWeight()) + (4.8 * user.getHeight())-(5.7 * user.getAge()));
+        return String.valueOf(result);
     }
 }

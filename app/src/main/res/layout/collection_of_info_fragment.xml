@@ -8,7 +8,6 @@ android:orientation="vertical">
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,7 +16,6 @@ android:orientation="vertical">
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
-
 
     <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/rg_ChooseGender"
@@ -51,14 +49,9 @@ android:orientation="vertical">
             android:text="Female" />
     </RadioGroup>
 
-    <TextView
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Weight"
-        android:textSize="@dimen/text_20"
-        android:gravity="center"
-        android:textStyle="bold"></TextView>
-
+        android:layout_height="wrap_content">
         <EditText
             android:id="@+id/et_Weight"
             android:layout_width="match_parent"
@@ -66,16 +59,11 @@ android:orientation="vertical">
             android:gravity="center"
             android:hint="Indicate your current weight"
             android:layout_margin="@dimen/margin_10"></EditText>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Height"
-        android:textSize="@dimen/text_20"
-        android:gravity="center"
-        android:textStyle="bold"></TextView>
-
-
+        android:layout_height="wrap_content">
         <EditText
             android:id="@+id/et_Height"
             android:layout_width="match_parent"
@@ -83,15 +71,11 @@ android:orientation="vertical">
             android:gravity="center"
             android:hint="Indicate your current height"
             android:layout_margin="@dimen/margin_10"></EditText>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Age"
-        android:textSize="@dimen/text_20"
-        android:gravity="center"
-        android:textStyle="bold"></TextView>
-
+        android:layout_height="wrap_content">
         <EditText
             android:id="@+id/et_Age"
             android:layout_width="match_parent"
@@ -99,6 +83,7 @@ android:orientation="vertical">
             android:gravity="center"
             android:hint="indicate your current age"
             android:layout_margin="@dimen/margin_10"></EditText>
+    </com.google.android.material.textfield.TextInputLayout>
 
         <Spinner
             android:id="@+id/spin_Lvl_activity"
@@ -118,7 +103,6 @@ android:orientation="vertical">
             android:layout_marginLeft="@dimen/margin_50"
             android:layout_marginRight="@dimen/margin_50">
         </Button>
-
 
         <TextView
             android:id="@+id/tv_info_test"

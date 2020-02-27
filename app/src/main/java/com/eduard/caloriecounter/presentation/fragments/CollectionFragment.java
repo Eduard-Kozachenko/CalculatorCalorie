@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import com.eduard.caloriecounter.R;
 import com.eduard.caloriecounter.presentation.base.BaseFragment;
@@ -15,12 +16,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
-
 public class CollectionFragment extends BaseFragment implements CollectionContract.View {
 
 //    @Inject
 //    CollectionPresenter collectionPresenter;
 
+    private EditText etWeight;
+    private EditText etHeight;
+    private EditText etAge;
     private TextView tvInfo;
     private Button btnGenerate;
     private CollectionContract.Presenter presenter;
@@ -40,14 +43,20 @@ public class CollectionFragment extends BaseFragment implements CollectionContra
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
     }
 
     @Override
     public void initView() {
+        etWeight = etWeight.findViewById(R.id.et_Weight);
+        etHeight = etHeight.findViewById(R.id.et_Height);
+        etAge = etAge.findViewById(R.id.et_Age);
+
         tvInfo = tvInfo.findViewById(R.id.tv_info_test);
         btnGenerate = btnGenerate.findViewById(R.id.btn_generate);
-        btnGenerate.setOnClickListener(v -> presenter.onClick(v));
+
+        btnGenerate.setOnClickListener(v -> presenter.collectionInfo(Double.valueOf(etWeight.getText().toString()),
+                Double.valueOf(etHeight.getText().toString()),
+                Double.valueOf(etAge.getText().toString())));
     }
 
     @Override

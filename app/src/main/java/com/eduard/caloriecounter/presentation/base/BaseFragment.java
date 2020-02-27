@@ -68,8 +68,7 @@ public class BaseFragment extends Fragment {
 //        AlertDialog alert = builder.create();
 //        alert.show();
 
-        builder.setTitle("Confirm Delete...");
-        builder.setMessage("Are you sure you want delete this file?");
+        builder.setMessage(information);
         builder.setIcon(R.drawable.ic_assignment_returned_black_24dp);
         builder.setPositiveButton("Ok",
                 (dialog, which) -> {
@@ -81,7 +80,7 @@ public class BaseFragment extends Fragment {
         builder.setNegativeButton("Cancel",
                 (dialog, which) -> {
                     Toast.makeText(getActivity(),
-                            "You clicked on NO", Toast.LENGTH_SHORT)
+                            "You clicked on Cancel", Toast.LENGTH_SHORT)
                             .show();
                     dialog.cancel();
                 });

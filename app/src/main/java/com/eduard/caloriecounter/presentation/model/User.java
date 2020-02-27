@@ -2,31 +2,48 @@ package com.eduard.caloriecounter.presentation.model;
 
 public class User {
 
-    public String UserWeight,UserHeight,UserAge;
+//    public String userWeight, userHeight, userAge;
+    public boolean userGender;
     public static final int MAX_DECIMAL_DIGITS = 1;
 
-    public String getWeight() {
-        return UserWeight;
+    public double userWeight, userHeight, userAge;
+
+    public User(double userWeight, double userHeight,  double userAge) {
+        this.userWeight = userWeight;
+        this.userHeight = userHeight;
+        this.userAge = userAge;
     }
 
-    public void setWeight(String weight) {
-        UserWeight = weight;
+    public double getWeight() {
+        return userWeight;
     }
 
-    public String getHeight() {
-        return UserHeight;
+    public void setWeight(double weight) {
+        userWeight = weight;
     }
 
-    public void setHeight(String height) {
-        UserHeight = height;
+    public double getHeight() {
+        return userHeight;
     }
 
-    public String getAge() {
-        return UserAge;
+    public void setHeight(double height) {
+        userHeight = height;
     }
 
-    public void setAge(String age) {
-        UserAge = age;
+    public double getAge() {
+        return userAge;
+    }
+
+    public void setAge(double age) {
+        userAge = age;
+    }
+
+    public boolean getGender() {
+        return userGender;
+    }
+
+    public void setGender(boolean userGender) {
+        this.userGender = userGender;
     }
 
 }

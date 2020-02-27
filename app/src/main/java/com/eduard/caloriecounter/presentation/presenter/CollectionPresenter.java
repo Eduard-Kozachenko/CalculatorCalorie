@@ -8,7 +8,6 @@ public class CollectionPresenter extends BasePresenter<CollectionContract.View> 
     private CollectionContract.Model model;
 
     public CollectionPresenter() {
-
         initPresenter();
     }
 
@@ -19,10 +18,15 @@ public class CollectionPresenter extends BasePresenter<CollectionContract.View> 
 
     @Override
     public void onClick(android.view.View view) {
-        String data = model.operation();
-        getView().setViewData(data);
+        //TODO
     }
 
+    @Override
+    public void collectionInfo(double weight, double height, double age) {
+        model = new CalculatorUserModel();
+        String data = String.valueOf(model.operation(weight,height,age));
+        getView().setViewData(data);
+    }
 }
 
 //Формула Харриса-Бенедикта
