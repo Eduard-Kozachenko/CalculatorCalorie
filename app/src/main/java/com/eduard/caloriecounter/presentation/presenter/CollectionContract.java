@@ -5,16 +5,16 @@ import com.eduard.caloriecounter.presentation.base.BasePresenter;
 public interface CollectionContract {
 
      interface View extends BasePresenter.View {
-         void initView();
          void setViewData(String data);
     }
 
     interface Presenter {
-         void onClick(android.view.View view);
-        void collectionInfo(double weight, double height, double age);
+        void collectionInfoMale(double weight, double height, double age);
+        void collectionInfoFemale(double weight, double height, double age);
     }
 
     interface Model {
-        String operation(double weight, double height, double age);
+        String operationMale(double weight, double height, double age);
+        String operationFemale(double weight, double height, double age);
     }
 }

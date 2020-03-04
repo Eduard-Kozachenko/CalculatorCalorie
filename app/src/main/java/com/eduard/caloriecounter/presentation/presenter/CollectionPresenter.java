@@ -8,23 +8,19 @@ public class CollectionPresenter extends BasePresenter<CollectionContract.View> 
     private CollectionContract.Model model;
 
     public CollectionPresenter() {
-        initPresenter();
-    }
-
-    private void initPresenter() {
-        model = new CalculatorUserModel();
-        getView().initView();
     }
 
     @Override
-    public void onClick(android.view.View view) {
-        //TODO
+    public void collectionInfoMale(double weight, double height, double age) {
+        model = new CalculatorUserModel();
+        String data = String.valueOf(model.operationMale(weight,height,age));
+        getView().setViewData(data);
     }
 
     @Override
-    public void collectionInfo(double weight, double height, double age) {
+    public void collectionInfoFemale(double weight, double height, double age) {
         model = new CalculatorUserModel();
-        String data = String.valueOf(model.operation(weight,height,age));
+        String data = String.valueOf(model.operationFemale(weight,height,age));
         getView().setViewData(data);
     }
 }

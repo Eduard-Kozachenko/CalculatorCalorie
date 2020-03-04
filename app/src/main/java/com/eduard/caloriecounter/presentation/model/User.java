@@ -2,10 +2,7 @@ package com.eduard.caloriecounter.presentation.model;
 
 public class User {
 
-//    public String userWeight, userHeight, userAge;
     public boolean userGender;
-    public static final int MAX_DECIMAL_DIGITS = 1;
-
     public double userWeight, userHeight, userAge;
 
     public User(double userWeight, double userHeight,  double userAge) {
