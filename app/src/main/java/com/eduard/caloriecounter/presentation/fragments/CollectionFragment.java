@@ -4,10 +4,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.eduard.caloriecounter.R;
 import com.eduard.caloriecounter.presentation.base.BaseFragment;
 import com.eduard.caloriecounter.presentation.presenter.CollectionContract;
@@ -17,7 +22,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
-public class CollectionFragment extends BaseFragment implements CollectionContract.View, View.OnClickListener {
+public class CollectionFragment extends BaseFragment implements CollectionContract.View, View.OnClickListener, AdapterView.OnItemSelectedListener {
 
 //    @Inject
 //    CollectionPresenter collectionPresenter;
@@ -49,18 +54,26 @@ public class CollectionFragment extends BaseFragment implements CollectionContra
         EditText etAge=getView().findViewById(R.id.et_Age);
         RadioButton rb_Male = getView().findViewById(R.id.rb_Male);
         RadioButton rb_Female = getView().findViewById(R.id.rb_Female);
-
+        Spinner spinLevel = getView().findViewById(R.id.spin_Lvl_activity);
 
         if (rb_Male.isChecked() == true) {
             presenter.collectionInfoMale(Double.valueOf(etWeight.getText().toString()),
                     Double.valueOf(etHeight.getText().toString()),
-                    Double.valueOf(etAge.getText().toString()));
+                    Double.valueOf(etAge.getText().toString()),
+                    Integer.valueOf(spinLevel.getSelectedItemPosition()));
         }else if(rb_Female.isChecked() == true) {
             presenter.collectionInfoFemale(Double.valueOf(etWeight.getText().toString()),
                     Double.valueOf(etHeight.getText().toString()),
-                    Double.valueOf(etAge.getText().toString()));
+                    Double.valueOf(etAge.getText().toString()),
+                    Integer.valueOf(spinLevel.getSelectedItemPosition()));
         }
     }
+
+//    ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+//            getActivity(),R.array.heading_level_activity,android.R.layout.simple_spinner_item);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spinLevel.setAdapter(adapter);
+//        spinLevel.setOnItemSelectedListener(this);
 
     @Override
     public void setViewData(String data) {
@@ -84,6 +97,18 @@ public class CollectionFragment extends BaseFragment implements CollectionContra
 
     @Override
     public void showError() {
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        Spinner spinLevel = getView().findViewById(R.id.spin_Lvl_activity);
+        if(i > 0) {
+            Toast.makeText(getActivity(), spinLevel.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
     }
 
 //    protected void onInjection() {

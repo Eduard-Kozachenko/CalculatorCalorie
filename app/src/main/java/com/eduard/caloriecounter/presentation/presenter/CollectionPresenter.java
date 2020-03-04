@@ -11,23 +11,17 @@ public class CollectionPresenter extends BasePresenter<CollectionContract.View> 
     }
 
     @Override
-    public void collectionInfoMale(double weight, double height, double age) {
+    public void collectionInfoMale(double weight, double height, double age, int level) {
         model = new CalculatorUserModel();
-        String data = String.valueOf(model.operationMale(weight,height,age));
+        String data = String.valueOf(model.operationMale(weight, height, age, level));
         getView().setViewData(data);
     }
 
     @Override
-    public void collectionInfoFemale(double weight, double height, double age) {
+    public void collectionInfoFemale(double weight, double height, double age, int level) {
         model = new CalculatorUserModel();
-        String data = String.valueOf(model.operationFemale(weight,height,age));
+        String data = String.valueOf(model.operationFemale(weight, height, age, level));
         getView().setViewData(data);
     }
 }
 
-//Формула Харриса-Бенедикта
-//        для мужчин: BMR = 88.36 + (13.4 x вес, кг) + (4.8 х рост, см) – (5.7 х возраст, лет)
-//        для женщин: BMR = 447.6 + (9.2 x вес, кг) + (3.1 х рост, cм) – (4.3 х возраст, лет)
-
-//+суточная активность
-//        Норма калорий = BMR x Уровень активности = 1765 х 1.55 = 2735 ккал
