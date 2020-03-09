@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="heading_level_activity">
+        <item>Choice activity level:</item>
+        <item>Sedentary lifestyle</item>
+        <item>Moderate activity (light physical activity or exercise 1-3 times a week)</item>
+        <item>Average activity (classes 3-5 times a week)</item>
+        <item>Active people (intense workouts, exercises 6-7 times a week)</item>
+        <item>Athletes and people performing similar loads (6-7 times a week)</item>
+    </string-array>
+
+</resources>
