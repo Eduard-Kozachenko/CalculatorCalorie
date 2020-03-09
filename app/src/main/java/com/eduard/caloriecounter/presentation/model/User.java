@@ -2,7 +2,6 @@ package com.eduard.caloriecounter.presentation.model;
 
 public class User {
 
-    public boolean userGender;
     public double userWeight, userHeight, userAge;
 
     public User(double userWeight, double userHeight,  double userAge) {
@@ -34,14 +33,5 @@ public class User {
     public void setAge(double age) {
         userAge = age;
     }
-
-    public boolean getGender() {
-        return userGender;
-    }
-
-    public void setGender(boolean userGender) {
-        this.userGender = userGender;
-    }
-
 }
 
