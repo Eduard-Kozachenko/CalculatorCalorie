@@ -37,8 +37,18 @@ public class CollectionFragment extends BaseFragment implements CollectionContra
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.collection_of_info_fragment, container, false);
+
         presenter = new CollectionPresenter();
-        return inflater.inflate(R.layout.collection_of_info_fragment, container, false);
+
+        Spinner spinLevel = v.findViewById(R.id.spin_Lvl_activity);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                getActivity(),R.array.heading_level_activity,android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinLevel.setAdapter(adapter);
+        spinLevel.setOnItemSelectedListener(this);
+
+        return v;
     }
 
     @Override
@@ -68,12 +78,6 @@ public class CollectionFragment extends BaseFragment implements CollectionContra
                     Integer.valueOf(spinLevel.getSelectedItemPosition()));
         }
     }
-
-//    ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-//            getActivity(),R.array.heading_level_activity,android.R.layout.simple_spinner_item);
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        spinLevel.setAdapter(adapter);
-//        spinLevel.setOnItemSelectedListener(this);
 
     @Override
     public void setViewData(String data) {
