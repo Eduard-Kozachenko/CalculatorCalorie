@@ -8,7 +8,7 @@ public class CalculatorUserModel implements CollectionContract.Model{
     @Override
     public String operationMale(double weight, double height, double age, int level) {
         User user = new User(weight,height,age);
-        double result =(88.36 + (13.4 * user.getWeight()) + (4.8 * user.getHeight())-(5.7 * user.getAge()));
+        double result =(88.36 + (13.4 * user.getWeight()) + (4.8 * user.getHeight())-(5.7 * user.getAge()));    //Формула Харриса-Бенедикта.
         double resPlus = 0;
         switch (level){
             case 0:
@@ -43,7 +43,7 @@ public class CalculatorUserModel implements CollectionContract.Model{
     @Override
     public String operationFemale(double weight, double height, double age, int level) {
         User user = new User(weight,height,age);
-        double result =(447.6 + (9.2 * user.getWeight()) + (3.1 * user.getHeight())-(4.3 * user.getAge()));
+        double result =(447.6 + (9.2 * user.getWeight()) + (3.1 * user.getHeight())-(4.3 * user.getAge()));      //Формула Харриса-Бенедикта.
         double resPlus = 0;
         switch (level){
             case 0:

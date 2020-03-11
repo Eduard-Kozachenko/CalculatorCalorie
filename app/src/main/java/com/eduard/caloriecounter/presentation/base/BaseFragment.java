@@ -56,15 +56,8 @@ public class BaseFragment extends Fragment {
         builder.setPositiveButton("Ok",
                 (dialog, which) -> {
                     Toast.makeText(getActivity(),
-                            "You clicked on Ok", Toast.LENGTH_SHORT)
+                            "Good luck!", Toast.LENGTH_SHORT)
                             .show();
-                });
-        builder.setNegativeButton("Cancel",
-                (dialog, which) -> {
-                    Toast.makeText(getActivity(),
-                            "You clicked on Cancel", Toast.LENGTH_SHORT)
-                            .show();
-                    dialog.cancel();
                 });
         builder.show();
     }

@@ -18,6 +18,8 @@ import com.eduard.caloriecounter.presentation.base.BaseFragment;
 import com.eduard.caloriecounter.presentation.presenter.CollectionContract;
 import com.eduard.caloriecounter.presentation.presenter.CollectionPresenter;
 
+import javax.inject.Inject;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
@@ -25,7 +27,7 @@ import androidx.fragment.app.DialogFragment;
 public class CollectionFragment extends BaseFragment implements CollectionContract.View, View.OnClickListener, AdapterView.OnItemSelectedListener {
 
 //    @Inject
-//    CollectionPresenter collectionPresenter;
+//    CollectionPresenter presenter;
 
     private CollectionContract.Presenter presenter;
     private DialogFragment loadingFragment = DialogLoadingFragment.getInstance();
@@ -90,8 +92,8 @@ public class CollectionFragment extends BaseFragment implements CollectionContra
 
     @Override
     public void showProgressBar() {
-        CountDownTimer CDT = new CountDownTimer(5000, 1000) {
-            int i = 5;
+        CountDownTimer cdt = new CountDownTimer(3000, 1000) {
+            int i = 3;
             public void onTick(long millisUntilFinished) {
                 if (!loadingFragment.isVisible()) {
                     loadingFragment.show(getActivity().getSupportFragmentManager(), "LOADING");
@@ -117,13 +119,4 @@ public class CollectionFragment extends BaseFragment implements CollectionContra
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
     }
-
-//    protected void onInjection() {
-//        DaggerCalculatorComponents.builder()
-//                .appComponent(CalculatorApp.getComponent())
-//                .presentationModule(new PresentationModule())
-//                .build()
-//                .inject(this);
-//    }
-
 }
