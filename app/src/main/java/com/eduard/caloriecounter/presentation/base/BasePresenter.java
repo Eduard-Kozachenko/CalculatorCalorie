@@ -24,8 +24,6 @@ public class BasePresenter<V extends BasePresenter.View> {
 
         void showProgressBar();
 
-        void hideProgressBar();
-
-        void showError();
+        void showInformationDialog(String data);
     }
 }

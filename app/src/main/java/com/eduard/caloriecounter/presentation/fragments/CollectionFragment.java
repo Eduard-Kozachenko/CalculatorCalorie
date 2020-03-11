@@ -1,6 +1,7 @@
 package com.eduard.caloriecounter.presentation.fragments;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.eduard.caloriecounter.R;
@@ -71,14 +71,16 @@ public class CollectionFragment extends BaseFragment implements CollectionContra
         String strUserA = etAge.getText().toString();
 
         if(TextUtils.isEmpty(strUserW) || TextUtils.isEmpty(strUserH) || TextUtils.isEmpty(strUserA) ) {
-            Toast.makeText(getActivity(),"Not all fields are filled correctly",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(),"Not all fields are filled correctly",Toast.LENGTH_LONG).show();
             return;
         }else if (rb_Male.isChecked() == true) {
+            showProgressBar();
             presenter.collectionInfoMale(Double.valueOf(strUserW),
                     Double.valueOf(strUserH),
                     Double.valueOf(strUserA),
                     Integer.valueOf(spinLevel.getSelectedItemPosition()));
         }else if(rb_Female.isChecked() == true) {
+            showProgressBar();
             presenter.collectionInfoFemale(Double.valueOf(strUserW),
                     Double.valueOf(strUserH),
                     Double.valueOf(strUserA),
@@ -87,27 +89,21 @@ public class CollectionFragment extends BaseFragment implements CollectionContra
     }
 
     @Override
-    public void setViewData(String data) {
-        TextView tvInfo=getView().findViewById(R.id.tv_info_test);
-        tvInfo.setText(data);
-    }
-
-    @Override
     public void showProgressBar() {
-        if (!loadingFragment.isVisible()) {
-            loadingFragment.show(getActivity().getSupportFragmentManager(), "LOADING");
-        }
-    }
-
-    @Override
-    public void hideProgressBar() {
-            if (loadingFragment.isVisible()) {
-                loadingFragment.dismiss();
+        CountDownTimer CDT = new CountDownTimer(5000, 1000) {
+            int i = 5;
+            public void onTick(long millisUntilFinished) {
+                if (!loadingFragment.isVisible()) {
+                    loadingFragment.show(getActivity().getSupportFragmentManager(), "LOADING");
+                }
+                i--;
             }
-    }
-
-    @Override
-    public void showError() {
+            public void onFinish() {
+                if (loadingFragment.isVisible()) {
+                    loadingFragment.dismiss();
+                }
+            }
+        }.start();
     }
 
     @Override

@@ -1,7 +1,6 @@
 package com.eduard.caloriecounter.presentation.base;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -28,7 +27,6 @@ public class BaseFragment extends Fragment {
     }
 
     protected void onPrepareFragment(@NonNull View view) {
-
     }
 
     protected void onInjection() {
@@ -53,30 +51,14 @@ public class BaseFragment extends Fragment {
     public void showInformationDialog(String information) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
-//        builder.setMessage(information);
-//        builder.setCancelable(true);
-//
-//        builder.setPositiveButton(
-//                "Ok",
-//                (dialog, id) -> dialog.cancel());
-//
-//        builder.setNegativeButton(
-//                "Cancel",
-//                (dialog, id) -> dialog.cancel());
-//
-//        AlertDialog alert = builder.create();
-//        alert.show();
-
         builder.setMessage(information);
         builder.setIcon(R.drawable.ic_assignment_returned_black_24dp);
         builder.setPositiveButton("Ok",
                 (dialog, which) -> {
                     Toast.makeText(getActivity(),
-                            "You clicked on YES", Toast.LENGTH_SHORT)
+                            "You clicked on Ok", Toast.LENGTH_SHORT)
                             .show();
                 });
-
         builder.setNegativeButton("Cancel",
                 (dialog, which) -> {
                     Toast.makeText(getActivity(),
@@ -84,7 +66,6 @@ public class BaseFragment extends Fragment {
                             .show();
                     dialog.cancel();
                 });
-
         builder.show();
     }
 

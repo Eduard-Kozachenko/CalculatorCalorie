@@ -103,16 +103,6 @@ android:orientation="vertical">
             android:layout_marginRight="@dimen/margin_50">
         </Button>
 
-        <TextView
-            android:id="@+id/tv_info_test"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_10"
-            android:text="@string/info_test"
-            android:textSize="@dimen/font_30"
-            android:gravity="center">
-        </TextView>
-
 </LinearLayout>
 
 </ScrollView>

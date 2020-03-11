@@ -14,14 +14,14 @@ public class CollectionPresenter extends BasePresenter<CollectionContract.View> 
     public void collectionInfoMale(double weight, double height, double age, int level) {
         model = new CalculatorUserModel();
         String data = String.valueOf(model.operationMale(weight, height, age, level));
-        getView().setViewData(data);
+        getView().showInformationDialog("Your result =" + data);
     }
 
     @Override
     public void collectionInfoFemale(double weight, double height, double age, int level) {
         model = new CalculatorUserModel();
         String data = String.valueOf(model.operationFemale(weight, height, age, level));
-        getView().setViewData(data);
+        getView().showInformationDialog("Your result =" + data);
     }
 }
 
