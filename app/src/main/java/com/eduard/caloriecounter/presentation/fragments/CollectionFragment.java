@@ -1,6 +1,8 @@
 package com.eduard.caloriecounter.presentation.fragments;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,13 +11,14 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.eduard.caloriecounter.R;
 import com.eduard.caloriecounter.presentation.base.BaseFragment;
 import com.eduard.caloriecounter.presentation.presenter.CollectionContract;
 import com.eduard.caloriecounter.presentation.presenter.CollectionPresenter;
+
+import javax.inject.Inject;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,7 +27,7 @@ import androidx.fragment.app.DialogFragment;
 public class CollectionFragment extends BaseFragment implements CollectionContract.View, View.OnClickListener, AdapterView.OnItemSelectedListener {
 
 //    @Inject
-//    CollectionPresenter collectionPresenter;
+//    CollectionPresenter presenter;
 
     private CollectionContract.Presenter presenter;
     private DialogFragment loadingFragment = DialogLoadingFragment.getInstance();
@@ -65,41 +68,44 @@ public class CollectionFragment extends BaseFragment implements CollectionContra
         RadioButton rb_Female = getView().findViewById(R.id.rb_Female);
         Spinner spinLevel = getView().findViewById(R.id.spin_Lvl_activity);
 
-        if (rb_Male.isChecked() == true) {
-            presenter.collectionInfoMale(Double.valueOf(etWeight.getText().toString()),
-                    Double.valueOf(etHeight.getText().toString()),
-                    Double.valueOf(etAge.getText().toString()),
+        String strUserW = etWeight.getText().toString();
+        String strUserH = etHeight.getText().toString();
+        String strUserA = etAge.getText().toString();
+
+        if(TextUtils.isEmpty(strUserW) || TextUtils.isEmpty(strUserH) || TextUtils.isEmpty(strUserA) ) {
+            Toast.makeText(getActivity(),"Not all fields are filled correctly",Toast.LENGTH_LONG).show();
+            return;
+        }else if (rb_Male.isChecked() == true) {
+            showProgressBar();
+            presenter.collectionInfoMale(Double.valueOf(strUserW),
+                    Double.valueOf(strUserH),
+                    Double.valueOf(strUserA),
                     Integer.valueOf(spinLevel.getSelectedItemPosition()));
         }else if(rb_Female.isChecked() == true) {
-            presenter.collectionInfoFemale(Double.valueOf(etWeight.getText().toString()),
-                    Double.valueOf(etHeight.getText().toString()),
-                    Double.valueOf(etAge.getText().toString()),
+            showProgressBar();
+            presenter.collectionInfoFemale(Double.valueOf(strUserW),
+                    Double.valueOf(strUserH),
+                    Double.valueOf(strUserA),
                     Integer.valueOf(spinLevel.getSelectedItemPosition()));
         }
-    }
-
-    @Override
-    public void setViewData(String data) {
-        TextView tvInfo=getView().findViewById(R.id.tv_info_test);
-        tvInfo.setText(data);
     }
 
     @Override
     public void showProgressBar() {
-        if (!loadingFragment.isVisible()) {
-            loadingFragment.show(getActivity().getSupportFragmentManager(), "LOADING");
-        }
-    }
-
-    @Override
-    public void hideProgressBar() {
-            if (loadingFragment.isVisible()) {
-                loadingFragment.dismiss();
+        CountDownTimer cdt = new CountDownTimer(3000, 1000) {
+            int i = 3;
+            public void onTick(long millisUntilFinished) {
+                if (!loadingFragment.isVisible()) {
+                    loadingFragment.show(getActivity().getSupportFragmentManager(), "LOADING");
+                }
+                i--;
             }
-    }
-
-    @Override
-    public void showError() {
+            public void onFinish() {
+                if (loadingFragment.isVisible()) {
+                    loadingFragment.dismiss();
+                }
+            }
+        }.start();
     }
 
     @Override
@@ -113,13 +119,4 @@ public class CollectionFragment extends BaseFragment implements CollectionContra
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
     }
-
-//    protected void onInjection() {
-//        DaggerCalculatorComponents.builder()
-//                .appComponent(CalculatorApp.getComponent())
-//                .presentationModule(new PresentationModule())
-//                .build()
-//                .inject(this);
-//    }
-
 }

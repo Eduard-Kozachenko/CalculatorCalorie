@@ -5,7 +5,6 @@ import com.eduard.caloriecounter.presentation.base.BasePresenter;
 public interface CollectionContract {
 
      interface View extends BasePresenter.View {
-         void setViewData(String data);
     }
 
     interface Presenter {

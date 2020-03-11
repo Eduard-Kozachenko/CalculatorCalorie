@@ -13,10 +13,6 @@ android:orientation="vertical">
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
-
     <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/rg_ChooseGender"
         android:layout_width="match_parent"
@@ -29,7 +25,6 @@ android:orientation="vertical">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Choose your gender: "
-            android:paddingRight="@dimen/padding_20"
             android:textStyle="bold"
             ></TextView>
 
@@ -57,8 +52,9 @@ android:orientation="vertical">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:hint="Indicate your current weight"
-            android:layout_margin="@dimen/margin_10"></EditText>
+            android:hint="Your Weight,kilogram"
+            android:layout_margin="@dimen/margin_10"
+            android:inputType="number"></EditText>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -69,8 +65,9 @@ android:orientation="vertical">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:hint="Indicate your current height"
-            android:layout_margin="@dimen/margin_10"></EditText>
+            android:hint="Your Height,centimeter"
+            android:layout_margin="@dimen/margin_10"
+            android:inputType="number"></EditText>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -81,15 +78,17 @@ android:orientation="vertical">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:hint="indicate your current age"
-            android:layout_margin="@dimen/margin_10"></EditText>
+            android:hint="Your Age,years"
+            android:layout_margin="@dimen/margin_10"
+            android:inputType="number"></EditText>
     </com.google.android.material.textfield.TextInputLayout>
 
         <Spinner
             android:id="@+id/spin_Lvl_activity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_10"></Spinner>
+            android:layout_margin="@dimen/margin_10"
+            android:textAlignment="center"></Spinner>
 
         <Button
             android:id="@+id/btn_generate"
@@ -103,16 +102,6 @@ android:orientation="vertical">
             android:layout_marginLeft="@dimen/margin_50"
             android:layout_marginRight="@dimen/margin_50">
         </Button>
-
-        <TextView
-            android:id="@+id/tv_info_test"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_10"
-            android:text="@string/info_test"
-            android:textSize="@dimen/font_30"
-            android:gravity="center">
-        </TextView>
 
 </LinearLayout>
 
