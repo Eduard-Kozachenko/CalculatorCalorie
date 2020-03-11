@@ -1,6 +1,7 @@
 package com.eduard.caloriecounter.presentation.fragments;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,15 +66,22 @@ public class CollectionFragment extends BaseFragment implements CollectionContra
         RadioButton rb_Female = getView().findViewById(R.id.rb_Female);
         Spinner spinLevel = getView().findViewById(R.id.spin_Lvl_activity);
 
-        if (rb_Male.isChecked() == true) {
-            presenter.collectionInfoMale(Double.valueOf(etWeight.getText().toString()),
-                    Double.valueOf(etHeight.getText().toString()),
-                    Double.valueOf(etAge.getText().toString()),
+        String strUserW = etWeight.getText().toString();
+        String strUserH = etHeight.getText().toString();
+        String strUserA = etAge.getText().toString();
+
+        if(TextUtils.isEmpty(strUserW) || TextUtils.isEmpty(strUserH) || TextUtils.isEmpty(strUserA) ) {
+            Toast.makeText(getActivity(),"Not all fields are filled correctly",Toast.LENGTH_SHORT).show();
+            return;
+        }else if (rb_Male.isChecked() == true) {
+            presenter.collectionInfoMale(Double.valueOf(strUserW),
+                    Double.valueOf(strUserH),
+                    Double.valueOf(strUserA),
                     Integer.valueOf(spinLevel.getSelectedItemPosition()));
         }else if(rb_Female.isChecked() == true) {
-            presenter.collectionInfoFemale(Double.valueOf(etWeight.getText().toString()),
-                    Double.valueOf(etHeight.getText().toString()),
-                    Double.valueOf(etAge.getText().toString()),
+            presenter.collectionInfoFemale(Double.valueOf(strUserW),
+                    Double.valueOf(strUserH),
+                    Double.valueOf(strUserA),
                     Integer.valueOf(spinLevel.getSelectedItemPosition()));
         }
     }
