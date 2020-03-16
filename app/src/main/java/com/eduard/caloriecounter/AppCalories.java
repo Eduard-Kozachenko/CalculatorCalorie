@@ -2,7 +2,11 @@ package com.eduard.caloriecounter;
 
 import android.app.Application;
 
-public class App extends Application {
+import com.eduard.caloriecounter.dagger.component.AppComponent;
+import com.eduard.caloriecounter.dagger.component.DaggerAppComponent;
+import com.eduard.caloriecounter.dagger.module.AppModule;
+
+public class AppCalories extends Application {
 
     private AppComponent component;
     @Override

@@ -26,22 +26,19 @@ import androidx.fragment.app.DialogFragment;
 
 public class CollectionFragment extends BaseFragment implements CollectionContract.View, View.OnClickListener, AdapterView.OnItemSelectedListener {
 
-//    @Inject
-//    CollectionPresenter presenter;
+    @Inject
+    protected CollectionPresenter presenter;
 
-    private CollectionContract.Presenter presenter;
     private DialogFragment loadingFragment = DialogLoadingFragment.getInstance();
 
     @Override
     public void onPreparePresenter() {
-        attachPresenter((CollectionPresenter) presenter, this);
+        attachPresenter(presenter, this);
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.collection_of_info_fragment, container, false);
-
-        presenter = new CollectionPresenter();
 
         Spinner spinLevel = v.findViewById(R.id.spin_Lvl_activity);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
@@ -73,7 +70,7 @@ public class CollectionFragment extends BaseFragment implements CollectionContra
         String strUserA = etAge.getText().toString();
 
         if(TextUtils.isEmpty(strUserW) || TextUtils.isEmpty(strUserH) || TextUtils.isEmpty(strUserA) ) {
-            Toast.makeText(getActivity(),"Not all fields are filled correctly",Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(),R.string.edit_text_error,Toast.LENGTH_LONG).show();
             return;
         }else if (rb_Male.isChecked() == true) {
             showProgressBar();

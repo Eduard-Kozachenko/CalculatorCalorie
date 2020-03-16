@@ -56,7 +56,7 @@ public class BaseFragment extends Fragment {
         builder.setPositiveButton("Ok",
                 (dialog, which) -> {
                     Toast.makeText(getActivity(),
-                            "Good luck!", Toast.LENGTH_SHORT)
+                            R.string.alert_ok, Toast.LENGTH_SHORT)
                             .show();
                 });
         builder.show();

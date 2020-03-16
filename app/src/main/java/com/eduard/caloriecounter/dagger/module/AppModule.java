@@ -1,4 +1,4 @@
-package com.eduard.caloriecounter;
+package com.eduard.caloriecounter.dagger.module;
 
 import android.app.Application;
 import android.content.Context;
