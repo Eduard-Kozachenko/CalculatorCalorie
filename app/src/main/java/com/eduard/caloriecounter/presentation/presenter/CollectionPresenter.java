@@ -5,10 +5,13 @@ import android.os.Handler;
 import com.eduard.caloriecounter.presentation.base.BasePresenter;
 import com.eduard.caloriecounter.presentation.utils.CalculatorUserModel;
 
+import javax.inject.Inject;
+
 public class CollectionPresenter extends BasePresenter<CollectionContract.View> implements CollectionContract.Presenter {
 
     private CollectionContract.Model model;
 
+    @Inject
     public CollectionPresenter() {
     }
 

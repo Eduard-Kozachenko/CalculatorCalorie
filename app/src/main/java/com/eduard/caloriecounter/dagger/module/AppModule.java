@@ -13,6 +13,9 @@ public class AppModule {
 
     private Application application;
 
+    @Provides
+    Application providesApplication() {return application;}
+
     public AppModule(Application application) {
         this.application = application;
     }

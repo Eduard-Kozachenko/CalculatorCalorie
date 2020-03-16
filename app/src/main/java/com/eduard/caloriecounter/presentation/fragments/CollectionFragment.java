@@ -14,6 +14,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.eduard.caloriecounter.R;
+import com.eduard.caloriecounter.dagger.component.DaggerAppComponent;
 import com.eduard.caloriecounter.presentation.base.BaseFragment;
 import com.eduard.caloriecounter.presentation.presenter.CollectionContract;
 import com.eduard.caloriecounter.presentation.presenter.CollectionPresenter;
@@ -27,7 +28,7 @@ import androidx.fragment.app.DialogFragment;
 public class CollectionFragment extends BaseFragment implements CollectionContract.View, View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     @Inject
-    protected CollectionPresenter presenter;
+    CollectionPresenter presenter;
 
     private DialogFragment loadingFragment = DialogLoadingFragment.getInstance();
 
@@ -115,5 +116,12 @@ public class CollectionFragment extends BaseFragment implements CollectionContra
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
+    }
+
+    @Override
+    protected void onInjection() {
+        DaggerAppComponent.builder()
+                .build()
+                .inject(this);
     }
 }
