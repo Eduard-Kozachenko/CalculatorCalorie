@@ -12,6 +12,8 @@ import android.widget.Button;
 import com.eduard.caloriecounter.R;
 import com.eduard.caloriecounter.presentation.fragments.CollectionFragment;
 
+import static com.eduard.caloriecounter.presentation.constants.AppConstants.ACTIVITY_REQUEST_CODE;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -19,15 +21,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        addFragment();
+//        addFragment();
     }
 
-    private void addFragment() {
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        CollectionFragment infoFragment = new CollectionFragment();
-        transaction.add(R.id.fl_container,infoFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
+//    private void addFragment() {
+//        FragmentManager manager = getSupportFragmentManager();
+//        FragmentTransaction transaction = manager.beginTransaction();
+//        CollectionFragment infoFragment = new CollectionFragment();
+//        transaction.add(R.id.fl_container,infoFragment);
+//        transaction.addToBackStack(null);
+//        transaction.commit();
+//    }
 }

@@ -41,7 +41,7 @@ public class CollectionFragment extends BaseFragment implements CollectionContra
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.collection_of_info_fragment, container, false);
 
-        Spinner spinLevel = v.findViewById(R.id.spin_Lvl_activity);
+        Spinner spinLevel = v.findViewById(R.id.spin_level_activity);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 getActivity(),R.array.heading_level_activity,android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -59,12 +59,12 @@ public class CollectionFragment extends BaseFragment implements CollectionContra
 
     @Override
     public void onClick(View v) {
-        EditText etWeight=getView().findViewById(R.id.et_Weight);
-        EditText etHeight=getView().findViewById(R.id.et_Height);
-        EditText etAge=getView().findViewById(R.id.et_Age);
+        EditText etWeight=getView().findViewById(R.id.et_weight);
+        EditText etHeight=getView().findViewById(R.id.et_height);
+        EditText etAge=getView().findViewById(R.id.et_age);
         RadioButton rb_Male = getView().findViewById(R.id.rb_Male);
         RadioButton rb_Female = getView().findViewById(R.id.rb_Female);
-        Spinner spinLevel = getView().findViewById(R.id.spin_Lvl_activity);
+        Spinner spinLevel = getView().findViewById(R.id.spin_level_activity);
 
         String strUserW = etWeight.getText().toString();
         String strUserH = etHeight.getText().toString();
@@ -108,7 +108,7 @@ public class CollectionFragment extends BaseFragment implements CollectionContra
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        Spinner spinLevel = getView().findViewById(R.id.spin_Lvl_activity);
+        Spinner spinLevel = getView().findViewById(R.id.spin_level_activity);
         if(i > 0) {
             Toast.makeText(getActivity(), spinLevel.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
         }

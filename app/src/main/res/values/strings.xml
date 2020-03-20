@@ -3,4 +3,11 @@
     <string name="info_test">Info</string>
     <string name="alert_ok">Good luck!</string>
     <string name="edit_text_error">Not all fields are filled correctly!</string>
+    <string name="task_title">My Calculator</string>
+    <string name="empty_notes">Once you add some notes\nyou will find it here</string>
+    <string name="btn_done">Done</string>
+    <string name="toolbar_data">Fill in the data</string>
+    <string name="edit_title">Title</string>
+    <string name="btn_generate">Generate</string>
+    <string name="edit_desc">Result</string>
 </resources>
