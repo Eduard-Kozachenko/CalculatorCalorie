@@ -20,9 +20,6 @@ public interface DaoAccess {
     @Query("SELECT * FROM Note ORDER BY created_at desc")
     LiveData<List<Note>> fetchAllTasks();
 
-    @Query("SELECT * FROM Note WHERE id =:taskId")
-    LiveData<Note> getTask(int taskId);
-
     @Update
     void updateTask(Note note);
 

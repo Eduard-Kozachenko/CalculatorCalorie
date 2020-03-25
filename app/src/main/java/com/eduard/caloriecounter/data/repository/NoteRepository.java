@@ -21,11 +21,6 @@ public class NoteRepository {
         noteDatabase = Room.databaseBuilder(context, NoteDatabase.class, DB_NAME).build();
     }
 
-    public void insertTask(String title, String description) {
-
-        insertTask(title, description, false);
-    }
-
     public void insertTask(String title, String description, boolean encrypt) {
 
         Note note = new Note();
@@ -60,19 +55,6 @@ public class NoteRepository {
         }.execute();
     }
 
-    public void deleteTask(final int id) {
-        final LiveData<Note> task = getTask(id);
-        if(task != null) {
-            new AsyncTask<Void, Void, Void>() {
-                @Override
-                protected Void doInBackground(Void... voids) {
-                    noteDatabase.daoAccess().deleteTask(task.getValue());
-                    return null;
-                }
-            }.execute();
-        }
-    }
-
     public void deleteTask(final Note note) {
         new AsyncTask<Void, Void, Void>() {
             @Override
@@ -81,10 +63,6 @@ public class NoteRepository {
                 return null;
             }
         }.execute();
-    }
-
-    public LiveData<Note> getTask(int id) {
-        return noteDatabase.daoAccess().getTask(id);
     }
 
     public LiveData<List<Note>> getTasks() {

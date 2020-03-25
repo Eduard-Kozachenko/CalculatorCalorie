@@ -1,10 +1,10 @@
 package com.eduard.caloriecounter.presentation.presenter;
 
-import com.eduard.caloriecounter.presentation.base.BasePresenter;
 
 public interface CollectionContract {
 
-     interface View extends BasePresenter.View {
+     interface View  {
+         void setViewData(String res);
     }
 
     interface Presenter {

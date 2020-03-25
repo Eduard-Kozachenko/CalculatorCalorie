@@ -1,16 +1,16 @@
 package com.eduard.caloriecounter.presentation.activity;
 
 import android.app.Activity;
+
 import android.content.Intent;
 import android.os.Bundle;
+
 import android.view.View;
 import android.widget.TextView;
 
 import com.eduard.caloriecounter.R;
 import com.eduard.caloriecounter.data.repository.NoteRepository;
 import com.eduard.caloriecounter.presentation.adapter.NotesListAdapter;
-import com.eduard.caloriecounter.presentation.constants.AppConstants;
-import com.eduard.caloriecounter.presentation.fragments.CollectionFragment;
 import com.eduard.caloriecounter.presentation.model.Note;
 import com.eduard.caloriecounter.presentation.utils.NavigatorUtils;
 import com.eduard.caloriecounter.presentation.utils.RecyclerItemClickListener;
@@ -18,10 +18,18 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-public class NotesListActivity extends AppCompatActivity implements View.OnClickListener, RecyclerItemClickListener.OnRecyclerViewItemClickListener, AppConstants {
+import static com.eduard.caloriecounter.presentation.constants.AppConstants.ACTIVITY_REQUEST_CODE;
+import static com.eduard.caloriecounter.presentation.constants.AppConstants.INTENT_DELETE;
+import static com.eduard.caloriecounter.presentation.constants.AppConstants.INTENT_DESC;
+import static com.eduard.caloriecounter.presentation.constants.AppConstants.INTENT_ENCRYPT;
+import static com.eduard.caloriecounter.presentation.constants.AppConstants.INTENT_TASK;
+import static com.eduard.caloriecounter.presentation.constants.AppConstants.INTENT_TITLE;
+
+public class NotesListActivity extends AppCompatActivity implements View.OnClickListener, RecyclerItemClickListener.OnRecyclerViewItemClickListener {
 
     private TextView emptyView;
     private RecyclerView recyclerView;
@@ -70,7 +78,7 @@ public class NotesListActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View view) {
-        Intent intent = new Intent(NotesListActivity.this, CollectionFragment.class);
+        Intent intent = new Intent(NotesListActivity.this, AddNoteActivity.class);
         startActivityForResult(intent, ACTIVITY_REQUEST_CODE);
     }
 
