@@ -1,71 +1,102 @@
 package com.eduard.caloriecounter.data.repository;
 
-import android.content.Context;
+import android.app.Application;
 import android.os.AsyncTask;
 
+import com.eduard.caloriecounter.data.dao.NoteDao;
 import com.eduard.caloriecounter.data.database.NoteDatabase;
 import com.eduard.caloriecounter.presentation.model.Note;
-import com.eduard.caloriecounter.presentation.utils.AppUtils;
 
 import java.util.List;
 
 import androidx.lifecycle.LiveData;
-import androidx.room.Room;
 
 public class NoteRepository {
+    private NoteDao noteDao;
+    private LiveData<List<Note>> allNotes;
 
-    private String DB_NAME = "db_task";
-
-    private NoteDatabase noteDatabase;
-    public NoteRepository(Context context) {
-        noteDatabase = Room.databaseBuilder(context, NoteDatabase.class, DB_NAME).build();
+    public NoteRepository(Application application){
+        NoteDatabase database = NoteDatabase.getInstance(application);
+        noteDao = database.noteDao();
+        allNotes = noteDao.getAllNotes();
     }
 
-    public void insertTask(String title, String description, boolean encrypt) {
-
-        Note note = new Note();
-        note.setTitle(title);
-        note.setDescription(description);
-        note.setCreatedAt(AppUtils.getCurrentDateTime());
-        note.setModifiedAt(AppUtils.getCurrentDateTime());
-        note.setEncrypt(encrypt);
-
-        insertTask(note);
+    public void insert(Note note){
+        new InsertNoteAsyncTask(noteDao).execute(note);
     }
 
-    public void insertTask(final Note note) {
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... voids) {
-                noteDatabase.daoAccess().insertTask(note);
-                return null;
-            }
-        }.execute();
+    public void update(Note note){
+        new UpdateNoteAsyncTask(noteDao).execute(note);
     }
 
-    public void updateTask(final Note note) {
-        note.setModifiedAt(AppUtils.getCurrentDateTime());
+    public void delete(Note note){
+        new DeleteNoteAsyncTask(noteDao).execute(note);    }
 
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... voids) {
-                noteDatabase.daoAccess().updateTask(note);
-                return null;
-            }
-        }.execute();
+    public void deleteAllNotes(){
+        new DeleteAllNotesAsyncTask(noteDao).execute();
     }
 
-    public void deleteTask(final Note note) {
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... voids) {
-                noteDatabase.daoAccess().deleteTask(note);
-                return null;
-            }
-        }.execute();
+    public LiveData<List<Note>> getAllNotes(){
+        return allNotes;
     }
 
-    public LiveData<List<Note>> getTasks() {
-        return noteDatabase.daoAccess().fetchAllTasks();
+    private static class InsertNoteAsyncTask extends AsyncTask<Note, Void, Void>{
+
+        private NoteDao noteDao;
+
+        public InsertNoteAsyncTask(NoteDao noteDao) {
+            this.noteDao = noteDao;
+        }
+
+        @Override
+        protected Void doInBackground(Note... notes) {
+            noteDao.insert(notes[0]);
+            return null;
+        }
+    }
+
+    private static class UpdateNoteAsyncTask extends AsyncTask<Note, Void, Void>{
+
+        private NoteDao noteDao;
+
+        public UpdateNoteAsyncTask(NoteDao noteDao) {
+            this.noteDao = noteDao;
+        }
+
+        @Override
+        protected Void doInBackground(Note... notes) {
+            noteDao.update(notes[0]);
+            return null;
+        }
+    }
+
+    private static class DeleteNoteAsyncTask extends AsyncTask<Note, Void, Void>{
+
+        private NoteDao noteDao;
+
+        public DeleteNoteAsyncTask(NoteDao noteDao) {
+            this.noteDao = noteDao;
+        }
+
+        @Override
+        protected Void doInBackground(Note... notes) {
+            noteDao.delete(notes[0]);
+            return null;
+        }
+    }
+
+    private static class DeleteAllNotesAsyncTask extends AsyncTask<Void, Void, Void>{
+
+        private NoteDao noteDao;
+
+        public DeleteAllNotesAsyncTask(NoteDao noteDao) {
+            this.noteDao = noteDao;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            noteDao.deleteAllNotes();
+            return null;
+        }
     }
 }

@@ -1,33 +1,25 @@
 package com.eduard.caloriecounter.presentation.model;
 
-import com.eduard.caloriecounter.presentation.utils.TimestampConverter;
-
-import java.io.Serializable;
-import java.util.Date;
-
-import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-import androidx.room.TypeConverters;
 
-@Entity
-public class Note implements Serializable {
+@Entity(tableName = "note_table")
+public class Note {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
 
     private String title;
+
     private String description;
 
-    @ColumnInfo(name = "created_at")
-    @TypeConverters({TimestampConverter.class})
-    private Date createdAt;
+    private int priority;
 
-    @ColumnInfo(name = "modified_at")
-    @TypeConverters({TimestampConverter.class})
-    private Date modifiedAt;
-
-    private boolean encrypt;
+    public Note(String title, String description, int priority) {
+        this.title = title;
+        this.description = description;
+        this.priority = priority;
+    }
 
     public int getId() {
         return id;
@@ -41,39 +33,11 @@ public class Note implements Serializable {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getModifiedAt() {
-        return modifiedAt;
-    }
-
-    public void setModifiedAt(Date modifiedAt) {
-        this.modifiedAt = modifiedAt;
-    }
-
-    public boolean isEncrypt() {
-        return encrypt;
-    }
-
-    public void setEncrypt(boolean encrypt) {
-        this.encrypt = encrypt;
+    public int getPriority() {
+        return priority;
     }
 }
