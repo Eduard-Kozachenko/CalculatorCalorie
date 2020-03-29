@@ -12,4 +12,5 @@
     <string name="edit_desc">Result</string>
     <string name="add_task_title">Add new note</string>
     <string name="edit_task_title">Edit note</string>
+    <string name="priority_text">Priority</string>
 </resources>
