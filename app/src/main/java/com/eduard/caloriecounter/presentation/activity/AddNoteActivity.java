@@ -6,17 +6,19 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.eduard.caloriecounter.R;
+import com.eduard.caloriecounter.presentation.utils.CalculationViewModel;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 
 public class AddNoteActivity extends AppCompatActivity {
     public static final String EXTRA_TITLE = "com.eduard.caltestmvvm.activity.EXTRA_TITLE";
@@ -24,6 +26,7 @@ public class AddNoteActivity extends AppCompatActivity {
     public static final String EXTRA_PRIORITY = "com.eduard.caltestmvvm.activity.EXTRA_PRIORITY";
 
     private EditText etTitle;
+    private RadioButton rb_Male,rb_Female;
     private EditText etWeight;
     private EditText etHeight;
     private EditText etAge;
@@ -31,17 +34,21 @@ public class AddNoteActivity extends AppCompatActivity {
     private TextView tvResult;
     private NumberPicker numberPickerPriority;
 
+    private CalculationViewModel calculationViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_note);
 
-        etTitle = findViewById(R.id.edit_title);
+        etTitle = findViewById(R.id.et_title);
+        rb_Male = findViewById(R.id.rb_Male);
+        rb_Female = findViewById(R.id.rb_Female);
         etWeight = findViewById(R.id.et_weight);
         etHeight = findViewById(R.id.et_height);
         etAge = findViewById(R.id.et_age);
         btnGenerate = findViewById(R.id.btn_generate);
-        tvResult = findViewById(R.id.tv_description);
+        tvResult = findViewById(R.id.tv_result);
         numberPickerPriority = findViewById(R.id.np_priority);
 
         numberPickerPriority.setMinValue(1);
@@ -51,10 +58,11 @@ public class AddNoteActivity extends AppCompatActivity {
         setTitle("Add Note");
 
         configView();
-
     }
 
     private void configView(){
+        calculationViewModel = ViewModelProviders.of(this).get(CalculationViewModel.class);
+
         btnGenerate.setOnClickListener(v -> {
             String strUserW = etWeight.getText().toString();
             String strUserH = etHeight.getText().toString();
@@ -63,10 +71,18 @@ public class AddNoteActivity extends AppCompatActivity {
             if(TextUtils.isEmpty(strUserW) || TextUtils.isEmpty(strUserH) || TextUtils.isEmpty(strUserA) ) {
                 Toast.makeText(getApplicationContext(),"Not all fields are filled correctly",Toast.LENGTH_SHORT).show();
                 return;
-            }else {
-                //TODO
+            }else if (rb_Male.isChecked() == true) {
+                calculationViewModel.collectionInfoMale(Double.valueOf(strUserW),
+                        Double.valueOf(strUserH),
+                        Double.valueOf(strUserA));
+            }else if(rb_Female.isChecked() == true) {
+                calculationViewModel.collectionInfoFemale(Double.valueOf(strUserW),
+                        Double.valueOf(strUserH),
+                        Double.valueOf(strUserA));
             }
         });
+
+        calculationViewModel.getResult().observe(this, res -> tvResult.setText(res));
     }
 
     @Override

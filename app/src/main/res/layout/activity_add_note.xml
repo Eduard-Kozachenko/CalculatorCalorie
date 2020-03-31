@@ -17,8 +17,8 @@
         android:paddingTop="@dimen/margin_10"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <com.an.customfontview.CustomEditText
-            android:id="@+id/edit_title"
+        <EditText
+            android:id="@+id/et_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
@@ -95,12 +95,12 @@
                 android:textSize="@dimen/font_16"></EditText>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Spinner
-            android:id="@+id/spin_level_activity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_10">
-        </Spinner>
+<!--        <Spinner-->
+<!--            android:id="@+id/spin_level_activity"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="@dimen/margin_10">-->
+<!--        </Spinner>-->
 
         <Button
             android:id="@+id/btn_generate"
@@ -112,8 +112,8 @@
             android:layout_gravity="center"
             android:layout_margin="@dimen/margin_10"/>
 
-        <com.an.customfontview.CustomTextView
-            android:id="@+id/edit_desc"
+        <TextView
+            android:id="@+id/tv_result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_10"
@@ -123,8 +123,7 @@
             android:inputType="textCapSentences|textMultiLine"
             android:textColor="@color/edit_title"
             android:textCursorDrawable="@drawable/cursor_black"
-            android:textSize="@dimen/font_20"
-            app:editFontPath="fonts/montserrat_light.otf" />
+            android:textSize="@dimen/font_20" />
 
         <TextView
             android:layout_width="match_parent"
