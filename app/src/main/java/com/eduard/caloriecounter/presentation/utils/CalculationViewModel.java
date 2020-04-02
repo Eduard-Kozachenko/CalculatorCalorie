@@ -16,11 +16,11 @@ public class CalculationViewModel extends ViewModel {
         return result;
     }
 
-    public void collectionInfoMale(double weight, double height, double age){
-        result.setValue(CalculationUseCase.operationMale(weight, height, age));
+    public void collectionInfoMale(double weight, double height, double age, int level){
+        result.setValue(CalculationUseCase.operationMale(weight, height, age, level));
     }
 
-    public void collectionInfoFemale(double weight, double height, double age){
-        result.setValue(CalculationUseCase.operationFemale(weight, height, age));
+    public void collectionInfoFemale(double weight, double height, double age, int level){
+        result.setValue(CalculationUseCase.operationFemale(weight, height, age, level));
     }
 }

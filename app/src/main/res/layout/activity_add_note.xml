@@ -95,12 +95,12 @@
                 android:textSize="@dimen/font_16"></EditText>
         </com.google.android.material.textfield.TextInputLayout>
 
-<!--        <Spinner-->
-<!--            android:id="@+id/spin_level_activity"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="@dimen/margin_10">-->
-<!--        </Spinner>-->
+        <Spinner
+            android:id="@+id/spin_level_activity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10">
+        </Spinner>
 
         <Button
             android:id="@+id/btn_generate"
@@ -112,7 +112,7 @@
             android:layout_gravity="center"
             android:layout_margin="@dimen/margin_10"/>
 
-        <TextView
+        <EditText
             android:id="@+id/tv_result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

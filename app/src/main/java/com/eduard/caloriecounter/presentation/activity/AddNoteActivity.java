@@ -6,10 +6,14 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,7 +24,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
-public class AddNoteActivity extends AppCompatActivity {
+public class AddNoteActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
     public static final String EXTRA_TITLE = "com.eduard.caltestmvvm.activity.EXTRA_TITLE";
     public static final String EXTRA_DESCRIPTION = "com.eduard.caltestmvvm.activity.EXTRA_DESCRIPTION";
     public static final String EXTRA_PRIORITY = "com.eduard.caltestmvvm.activity.EXTRA_PRIORITY";
@@ -30,6 +34,7 @@ public class AddNoteActivity extends AppCompatActivity {
     private EditText etWeight;
     private EditText etHeight;
     private EditText etAge;
+    private Spinner spinLevel;
     private Button btnGenerate;
     private TextView tvResult;
     private NumberPicker numberPickerPriority;
@@ -47,6 +52,7 @@ public class AddNoteActivity extends AppCompatActivity {
         etWeight = findViewById(R.id.et_weight);
         etHeight = findViewById(R.id.et_height);
         etAge = findViewById(R.id.et_age);
+        spinLevel = findViewById(R.id.spin_level_activity);
         btnGenerate = findViewById(R.id.btn_generate);
         tvResult = findViewById(R.id.tv_result);
         numberPickerPriority = findViewById(R.id.np_priority);
@@ -56,6 +62,12 @@ public class AddNoteActivity extends AppCompatActivity {
 
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_black_24dp);
         setTitle("Add Note");
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                this,R.array.heading_level_activity,android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinLevel.setAdapter(adapter);
+        spinLevel.setOnItemSelectedListener(this);
 
         configView();
     }
@@ -74,11 +86,13 @@ public class AddNoteActivity extends AppCompatActivity {
             }else if (rb_Male.isChecked() == true) {
                 calculationViewModel.collectionInfoMale(Double.valueOf(strUserW),
                         Double.valueOf(strUserH),
-                        Double.valueOf(strUserA));
+                        Double.valueOf(strUserA),
+                        Integer.valueOf(spinLevel.getSelectedItemPosition()));
             }else if(rb_Female.isChecked() == true) {
                 calculationViewModel.collectionInfoFemale(Double.valueOf(strUserW),
                         Double.valueOf(strUserH),
-                        Double.valueOf(strUserA));
+                        Double.valueOf(strUserA),
+                        Integer.valueOf(spinLevel.getSelectedItemPosition()));
             }
         });
 
@@ -120,5 +134,16 @@ public class AddNoteActivity extends AppCompatActivity {
 
         setResult(RESULT_OK, data);
         finish();
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        if(position > 0) {
+            Toast.makeText(getApplicationContext(), spinLevel.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
     }
 }
