@@ -2,7 +2,6 @@ package com.eduard.caloriecounter.presentation.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
 import com.eduard.caloriecounter.R;
@@ -11,11 +10,8 @@ import com.eduard.caloriecounter.presentation.model.Note;
 import com.eduard.caloriecounter.presentation.utils.NoteViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.List;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -53,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == ADD_NOTE_REQUEST && requestCode == RESULT_OK){
+        if(requestCode == ADD_NOTE_REQUEST && resultCode == RESULT_OK){
             String title = data.getStringExtra(AddNoteActivity.EXTRA_TITLE);
             String description = data.getStringExtra(AddNoteActivity.EXTRA_DESCRIPTION);
             int priority = data.getIntExtra(AddNoteActivity.EXTRA_PRIORITY, 1);
