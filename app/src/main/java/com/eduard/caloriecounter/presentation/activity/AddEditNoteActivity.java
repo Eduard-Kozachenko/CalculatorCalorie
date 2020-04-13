@@ -18,7 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.eduard.caloriecounter.R;
-import com.eduard.caloriecounter.presentation.utils.CalculationViewModel;
+import com.eduard.caloriecounter.presentation.viewModel.CalculationViewModel;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

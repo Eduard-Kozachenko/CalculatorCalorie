@@ -9,12 +9,16 @@ import com.eduard.caloriecounter.presentation.model.Note;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import androidx.lifecycle.LiveData;
 
 public class NoteRepository {
+
     private NoteDao noteDao;
     private LiveData<List<Note>> allNotes;
 
+    @Inject
     public NoteRepository(Application application){
         NoteDatabase database = NoteDatabase.getInstance(application);
         noteDao = database.noteDao();
