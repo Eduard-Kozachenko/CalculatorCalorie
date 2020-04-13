@@ -1,4 +1,4 @@
-package com.eduard.caloriecounter.presentation.utils;
+package com.eduard.caloriecounter.presentation.viewModel;
 
 import com.eduard.caloriecounter.presentation.usecase.CalculationUseCase;
 

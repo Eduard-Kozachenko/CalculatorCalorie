@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.eduard.caloriecounter.R;
 import com.eduard.caloriecounter.presentation.adapter.NoteAdapter;
 import com.eduard.caloriecounter.presentation.model.Note;
-import com.eduard.caloriecounter.presentation.utils.NoteViewModel;
+import com.eduard.caloriecounter.presentation.viewModel.NoteViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.annotation.NonNull;

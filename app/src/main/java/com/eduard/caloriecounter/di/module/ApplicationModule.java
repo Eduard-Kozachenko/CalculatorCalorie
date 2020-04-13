@@ -1,28 +1,26 @@
 package com.eduard.caloriecounter.di.module;
 
-import javax.inject.Singleton;
+import android.app.Application;
+
+import com.eduard.caloriecounter.CalorieApplication;
 
 import dagger.Module;
 import dagger.Provides;
 
-@Singleton
-@Module(includes = ViewModelModule.class)
+@Module
 public class ApplicationModule {
-
-    private static final String BASE_URL = "https://api.github.com/";
-
-    @Singleton
-    @Provides
-    static Retrofit provideRetrofit() {
-        return new Retrofit.Builder().baseUrl(BASE_URL)
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+    private final CalorieApplication application;
+    public ApplicationModule(CalorieApplication application) {
+        this.application = application;
     }
 
-    @Singleton
     @Provides
-    static RepoService provideRetrofitService(Retrofit retrofit) {
-        return retrofit.create(RepoService.class);
+    CalorieApplication provideCalorieApplication(){
+        return application;
+    }
+
+    @Provides
+    Application provideApplication(){
+        return application;
     }
 }
